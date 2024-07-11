@@ -1,0 +1,10 @@
+arg(1).
+arg(2).
+arg(3).
+arg(4).
+arg(5).
+attack(2, 5, "alpha", 1).
+attack(5, 2, "alpha", 2).
+attack(2, 3, 10, 3).
+
+attack(X, Y) :- attack(X, Y, W, I).
