@@ -16,20 +16,26 @@ asp_code_input = """
     in(5, 5, 2).
 """
 
+# asp_code_input = """
+#     arg(1).
+#     arg(2).
+#     arg(3).
+#     arg(4).
+#     attack(2, 1, "alpha", 1).
+#     attack(3, 1, 7, 2).
+#     attack(4, 1, 3, 3).
+#     support(3, 2, 9, 4).
+#     support(4, 2, 7, 5).
+#     in(3, 7, 1).
+# """
+
 asp_code_preferred = """
     % 猜测一个子集S
     in(A) :- not out(A), arg(A).
     out(A) :- not in(A), arg(A).
     % 带权重的事实的转化: in(A, W, I)
-    in(A) :- not unsat(I), in(A, W, I).
-    unsat(I) :- not in(A), in(A, W, I).
-    :~ unsat(I), in(A, W, I), W!="alpha". [W@0, I]
-    :~ unsat(I), in(A, W, I), W="alpha". [1@1, I]
-    % 带权重的事实的转化: out(A, W, I)
-    out(A) :- not unsat(I), out(A, W, I).
-    unsat(I) :- not out(A), out(A, W, I).
-    :~ unsat(I), out(A, W, I), W!="alpha". [W@0, I]
-    :~ unsat(I), out(A, W, I), W="alpha". [1@1, I]
+    :~ out(A), in(A, W, I), W!="alpha". [W@0, I]
+    :~ out(A), in(A, W, I), W="alpha". [1@1, I]
     % attack关系的转化: A => -B
     out(B) :- in(A), not unsat(I, 1), attack(A, B, W, I).
     unsat(I, 1) :- in(A), not out(B), attack(A, B, W, I).

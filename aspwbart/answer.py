@@ -1,4 +1,4 @@
-# 将 symbols 中的每个 atom 的类型转化为字符串，得到的形式如’in(2)‘
+# 将 symbols 中的每个 atom 的类型转化为字符串，得到的形式如'in(2)'
 def atom_to_str(atom):
     args = [str(arg) for arg in atom.arguments]
     atom_args = '(' + f"{', '.join(args)}" + ')'

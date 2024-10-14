@@ -5,15 +5,8 @@ in(A) :- not out(A), arg(A).
 out(A) :- not in(A), arg(A).
 
 % 带权重的事实的转化: in(A, W, I)
-in(A) :- not unsat(I), in(A, W, I).
-unsat(I) :- not in(A), in(A, W, I).
-:~ unsat(I), in(A, W, I), W!="alpha". [W@0, I]
-:~ unsat(I), in(A, W, I), W="alpha". [1@1, I]
-% 带权重的事实的转化: out(A, W, I)
-out(A) :- not unsat(I), out(A, W, I).
-unsat(I) :- not out(A), out(A, W, I).
-:~ unsat(I), out(A, W, I), W!="alpha". [W@0, I]
-:~ unsat(I), out(A, W, I), W="alpha". [1@1, I]
+:~ out(A), in(A, W, I), W!="alpha". [W@0, I]
+:~ out(A), in(A, W, I), W="alpha". [1@1, I]
 
 % attack关系的转化: A => -B
 out(B) :- in(A), not unsat(I, 1), attack(A, B, W, I).
