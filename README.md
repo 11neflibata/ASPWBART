@@ -6,4 +6,4 @@
 
 - evaluate.py  --  evaluate the efficiency of ASPWBART
 
-**experiment**  --  compare the corresponding semantics in the four argumentation frameworks
+**experiment**  --  compare the corresponding semantics in different argumentation frameworks
